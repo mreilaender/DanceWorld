@@ -11,17 +11,12 @@ $supported_extensions = array (
 		3 => "png",
 		4 => "gif" 
 );
-checkNextNumber ();
 if (isset ( $_POST ['upload'] )) {
+	checkNextNumber ();
 	$tmp = "LOG:<br/>";
-	if ($tmp = checkFile() == true) {
-		if($tmp = uploadFile() == true)
-			;
-		else
-			echo "uploadFile() failed!" . $tmp;
-	} else {
-		echo "checkFile() failed! " . $tmp;
-	}
+	$tmp = checkFile();
+	$tmp = uploadFile();
+	echo "<br/>" . $tmp;
 }
 function checkNextNumber() {
 	$dir = opendir ( $GLOBALS ["target_dir"] );
