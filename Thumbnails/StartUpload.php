@@ -3,7 +3,7 @@ include 'Thumbnail.php';
 error_reporting ( E_ALL );
 $target_dir = "Bilder/Fotos/"; // Picture directory
 $thum_dir = "Bilder/Thumbnails/"; // Thumbnail directory
-$temp_dir = "Bilder/tmp/";//Temporary directory, where files will be uploaded in full size (e.g. 4k), but will be cleared after finishing convertation
+$temp_dir = "Bilder/Temporaer/";//Temporary directory, where files will be uploaded in full size (e.g. 4k), but will be cleared after finishing convertation
 $nextNumber = false; // Jakub Kopec file number system, foto 1 (1.png) has a thumbnail with the exact same name (1.png) directories listed above
 $supported_extensions = array (
 		1 => "jpeg",
