@@ -67,7 +67,7 @@ function uploadFile() {
 	$func_info = "";
 	
 	// Uploading file
-	$func_info .= "Uploading file<br/>\n";
+	$func_info .= "Uploading file from " . $_FILES ["file_upload"] ["tmp_name"] . " to " . __DIR__ . "/" . $GLOBALS['temp_dir'] . basename($_FILES['file_upload']['name']) .  "<br/>\n";
 	if (move_uploaded_file ( $_FILES ["file_upload"] ["tmp_name"], __DIR__ . "/" . $GLOBALS['temp_dir'] . basename($_FILES['file_upload']['name']) )) {
 		$func_info .= "File has been successfully uploaded<br/>\n";
 	} else {
