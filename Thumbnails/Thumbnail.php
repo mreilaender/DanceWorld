@@ -16,7 +16,17 @@ function resizePropotional($file, $width, $height, $filename) {
 		return $func_info;
 	
 	$image_info = getimagesize ( $file );
-		
+	/*
+	 * [0] -> width
+	 * [1] -> height
+	 * [2] -> image extension 
+	 */
+	//Prevent memory exhausted
+	$func_info .= "Checking resolution<br/>\n";
+	if(($image_info[0] * $image_info[1]) > (1920*1080)) {
+		$func_info .= "More than (1920*1080) Pixels are not allowed";
+		return $func_info;
+	}
 	//Check file format
 	$func_info .= "Checking Image-Type ...\n";
 	switch($image_info[2]) {
