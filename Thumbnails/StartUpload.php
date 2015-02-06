@@ -77,7 +77,7 @@ function uploadFile() {
 		$func_info .= "File has been successfully uploaded<br/>\n";
 	} else {
 		$func_info .= "Some error occurred<br/>\n";
-		return false;
+		return $func_info;
 	}
 	
 	//Converting to FullHD
@@ -87,7 +87,7 @@ function uploadFile() {
 		$func_info .= "Convertation to FullHD successful<br/>\n";
 	} else {
 		$func_info .= "Convertation to FullHD failed, function (resizePropotional) log:<br/>\n------------------ LOG ----------------------<br/>\n" . $tmp . "<br/>\n------------------ END LOG -------------------";
-		return false;
+		return $func_info;
 	}
 	
 	//Creating Thumbnail
