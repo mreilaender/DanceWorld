@@ -67,7 +67,7 @@ function uploadFile() {
 	$func_info = "";
 	
 	// Uploading file
-	$func_info .= "Uploading file from " . $_FILES ["file_upload"] ["tmp_name"] . " to " . __DIR__ . "/" . $GLOBALS['temp_dir'] . basename($_FILES['file_upload']['name']) .  "<br/>\n";
+	$func_info .= "Uploading file from <b>" . $_FILES ["file_upload"] ["tmp_name"] . "</b> to <b>" . __DIR__ . "/" . $GLOBALS['temp_dir'] . basename($_FILES['file_upload']['name']) .  "</b><br/>\n";
 	if (move_uploaded_file ( $_FILES ["file_upload"] ["tmp_name"], __DIR__ . "/" . $GLOBALS['temp_dir'] . basename($_FILES['file_upload']['name']) )) {
 		$func_info .= "File has been successfully uploaded<br/>\n";
 	} else {
@@ -76,12 +76,12 @@ function uploadFile() {
 	}
 	
 	//Converting to FullHD
-	$func_info .= "Converting to FullHD";
+	$func_info .= "Converting to FullHD<br/>\n";
 	$tmp = resizePropotional($GLOBALS['temp_dir']. basename($_FILES['file_upload']['name']), "1920", "1080", $GLOBALS['target_dir']);
-	if($tmp) {
+	if($tmp === true) {
 		$func_info .= "Convertation to FullHD successful<br/>\n";
 	} else {
-		$func_info .= "Convertation to FullHD failed, function (resizePropotional) log:<br/>\n------------------ LOG ----------------------<br/>\n" . $tmp . "<br/>\n------------------ END LOG -------------------";
+		$func_info .= "Convertation to FullHD failed, function (resizePropotional) log:<br/>\n------------------ LOG ----------------------<br/>\n" . $tmp . "<br/>\n--------------- END LOG ------------------";
 		return $func_info;
 	}
 	
@@ -89,10 +89,10 @@ function uploadFile() {
 	$func_info .= "Making Thumbnail<br/>\n";
 	//TODO Adjust thumbnail measures
 	$tmp = resizePropotional($GLOBALS['temp_dir']. basename($_FILES['file_upload']['name']), "500", "300", $GLOBALS['thum_dir']);
-	if($tmp) {
+	if($tmp === true) {
 		$func_info .= "Thumbnail successfully created";
 	} else {
-		$func_info .= "Couldn't create Thumbnail, function log (resizePropotional) log:<br/>\n------------------ LOG ----------------------<br/>\n" . $tmp . "<br/>\n------------------ END LOG -------------------";
+		$func_info .= "Couldn't create Thumbnail, function log (resizePropotional) log:<br/>\n------------------ LOG ----------------------<br/>\n" . $tmp . "<br/>\n--------------- END LOG ------------------";
 		return $func_info;
 	}
 	
@@ -104,7 +104,6 @@ function uploadFile() {
 		}
 	}
 	closedir($dir);
-	
 	return true;
 }
 ?>
