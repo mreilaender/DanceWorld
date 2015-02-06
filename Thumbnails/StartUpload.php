@@ -18,7 +18,7 @@ if (isset ( $_POST ['upload'] )) {
 		if($tmp = uploadFile() == true)
 			;
 		else
-			echo "uploadFile() failed!";
+			echo "uploadFile() failed!" . $tmp;
 	} else {
 		echo "checkFile() failed! " . $tmp;
 	}
